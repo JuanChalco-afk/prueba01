@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-3">Editar registro</h2>
+<form method="post">
+  <div class="mb-3">
+    <label class="form-label">Nombre</label>
+    <input type="text" name="nombre" class="form-control" value="{{ persona['nombre'] }}" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Teléfono</label>
+    <input type="text" name="telefono" class="form-control" value="{{ persona['telefono'] }}">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Fecha Nacimiento</label>
+    <input type="date" name="fecha_nac" class="form-control" value="{{ persona['fecha_nac'] }}">
+  </div>
+  <button type="submit" class="btn btn-warning text-dark fw-bold">Actualizar</button>
+  <a href="{{ url_for('index') }}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

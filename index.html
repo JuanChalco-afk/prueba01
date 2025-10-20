@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h2 class="mb-3">Listado de personas</h2>
+  <a href="{{ url_for('create') }}" class="btn btn-success mb-3">Nuevo registro</a>
+
+  <table class="table table-bordered text-center align-middle">
+    <thead style="background-color: #212529; color: white;">
+      <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Telefono</th>
+        <th>Fecha Nac</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in personas %}
+      <tr>
+        <td>{{ p.id }}</td>
+        <td>{{ p.nombre }}</td>
+        <td>{{ p.telefono }}</td>
+        <td>{{ p.fecha_nac }}</td>
+        <td>
+          <a href="{{ url_for('edit', id=p.id) }}" class="btn btn-warning btn-sm text-dark fw-bold">Editar</a>
+          <form action="{{ url_for('delete', id=p.id) }}" method="post" style="display:inline-block;" onsubmit="return confirm('¿Deseas eliminar este registro?');">
+            <button type="submit" class="btn btn-danger btn-sm fw-bold">Eliminar</button>
+          </form>
+        </td>
+      </tr>
+      {% else %}
+      <tr>
+        <td colspan="5">No hay registros</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
