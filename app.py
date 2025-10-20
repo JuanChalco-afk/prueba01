@@ -45,7 +45,7 @@ def create():
 
         conn = get_db_connection()
         conn.execute("INSERT INTO persona (nombre, telefono, fecha_nac) VALUES (?, ?, ?)",
-                     (nombre, telefono, fecha_nac))
+                    (nombre, telefono, fecha_nac))
         conn.commit()
         conn.close()
         flash('Persona registrada correctamente', 'success')
